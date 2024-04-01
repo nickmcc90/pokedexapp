@@ -10,7 +10,7 @@ function App() {
       </div>
 
 
-      <button>Load more...</button>
+      <button>Load more....</button>
 
     </body>
   );
