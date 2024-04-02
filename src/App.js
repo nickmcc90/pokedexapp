@@ -17,3 +17,6 @@ function App() {
 }
 
 export default App;
+
+
+// We gotta add the poke API to our firebase... then grab it from the database. Next time 4/1/24
