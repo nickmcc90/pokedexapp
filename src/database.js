@@ -18,3 +18,18 @@ const database = getDatabase(app);
 export { database };
 
 // we import the database into the components, and import the components into the app.
+
+// data we will need...
+/* 
+Name, before picture, evolved picture, height, weight, base XP, two different types (grass and poison if applies).
+
+/name
+/before pic
+/evolved pic
+/height
+/weight
+/base-XP
+/type-1
+/type-2
+
+*/

@@ -1,5 +1,6 @@
 import './styles/App.css'
 import masterball from './icons/game.png'
+import APIcall from './components/APIcall';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <img className="masterball" src={masterball} />
       </div>
 
+      <APIcall />
 
       <button>Load more....</button>
 
@@ -20,3 +22,5 @@ export default App;
 
 
 // We gotta add the poke API to our firebase... then grab it from the database. Next time 4/1/24
+
+// figure out why we cant call from a second api link.... 4/2/24
