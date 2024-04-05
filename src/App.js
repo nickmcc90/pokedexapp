@@ -66,3 +66,5 @@ myPromise.then(a => {
 
 // Task for tomorrow.... figure out how to have an array of front sprites and shiny front sprites.
 // Do the front sprites first.
+
+//Task for tomorrow.... get height, weight, and base_XP statistics in arrays.

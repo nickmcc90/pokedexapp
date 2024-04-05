@@ -7,20 +7,47 @@ export default function APIcall() {
     const [pokemon, setPokemon] = useState();
 
     const handleFetch = (response) => {
-      console.log(response.status)
+      // console.log(response.status)
       return response.json();
     }
 
-    const handleResponse3 = (response) => {
-      const frontImgPath = response.sprites.front_default;
-      const image = <img src={frontImgPath} />;
 
-      setPokemon(image)
+    const frontDefaultArray = [];
+    const frontShinyArray = [];
+    const handleResponse3 = (response) => {
+      let frontImgPath = response.sprites.front_default;
+      let shinyImgPath = response.sprites.front_shiny;
+      frontDefaultArray.push(frontImgPath);
+      frontShinyArray.push(shinyImgPath);
+      // const image = <img src={shinyImgPath} />;
+      // const imageTwo = <img src={frontImgPath} />;
+
+      // setPokemon(<div>{image}{imageTwo}</div>)
+
+      console.log(frontShinyArray.length);
+
+      if(frontShinyArray.length === 10) {
+        // const everything = frontDefaultArray.map((item) => <img src={item} />)
+        // const everythingTwo = frontShinyArray.map((item) => <img src={item} />)
+
+        const combinedArray = [];
+        for(let i = 0; i < frontShinyArray.length; i++) {
+          combinedArray.push(frontDefaultArray[i]);
+          combinedArray.push(frontShinyArray[i]);
+        }
+
+        const everything = combinedArray.map((item) => <img src={item}/>);
+
+
+        setPokemon(<div>{everything}</div>)
+
+        // setPokemon(<div>{everything}{everythingTwo}</div>)
+      }
     }
 
     const handleResponse2 = (response) => {
       const evenDeeperUrl = response.forms[0].url;
-      console.log(evenDeeperUrl);
+      // console.log(evenDeeperUrl);
 
       fetch(evenDeeperUrl)
       .then(handleFetch)
@@ -28,6 +55,7 @@ export default function APIcall() {
       .catch(handleError)
 
     }
+
 
     const handleResponse = (response) => {
       //names. we save the names into an array too.
@@ -53,13 +81,27 @@ export default function APIcall() {
       pokeUrl.forEach((urlThing) => {
         deeperUrls.push(urlThing.props.children);
       })
-      console.log(deeperUrls[0]);
+      // console.log(deeperUrls[0]);
 
+      deeperUrls.forEach((thing) => {
+        fetch(thing)
+        .then(handleFetch)
+        .then(handleResponse2)
+        .catch(handleError)
+      })
 
-      fetch(deeperUrls[0])
-      .then(handleFetch)
-      .then(handleResponse2)
-      .catch(handleError)
+      // console.log(frontDefaultArray);
+      
+      // const sprites = frontDefaultArray.map((item) => <img src={item} />)
+
+      // setPokemon(sprites);
+
+      // console.log(sprites);
+
+      // fetch(deeperUrls[0])
+      // .then(handleFetch)
+      // .then(handleResponse2)
+      // .catch(handleError)
 
 
       // const frontImgPaths = pokeUrl.map((item) => <li>{item.base_experience}</li>)
@@ -85,8 +127,8 @@ export default function APIcall() {
 
 
     return (
-      <ul>
+      <div>
       {pokemon}
-      </ul>
+      </div>
     );
 }
