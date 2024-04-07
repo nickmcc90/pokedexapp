@@ -1,6 +1,7 @@
 import './styles/App.css'
 import masterball from './icons/game.png'
 import APIcall from './components/APIcall';
+import Card from './components/pokecard';
 
 function App() {
   return (
@@ -10,9 +11,11 @@ function App() {
         <img className="masterball" src={masterball} />
       </div>
 
-      <APIcall />
+      {/* <APIcall /> */}
 
-      <button>Load more....</button>
+      <Card />
+
+      {/* <button>Load more....</button> */}
 
     </body>
   );
@@ -67,4 +70,7 @@ myPromise.then(a => {
 // Task for tomorrow.... figure out how to have an array of front sprites and shiny front sprites.
 // Do the front sprites first.
 
-//Task for tomorrow.... get height, weight, and base_XP statistics in arrays.
+//Task for tomorrow.... get base_XP and a random move's statistics in arrays.
+
+
+// Next task.... make a card format.

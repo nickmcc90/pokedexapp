@@ -14,40 +14,63 @@ export default function APIcall() {
 
     const frontDefaultArray = [];
     const frontShinyArray = [];
+    const moveText = [];
     const handleResponse3 = (response) => {
-      let frontImgPath = response.sprites.front_default;
-      let shinyImgPath = response.sprites.front_shiny;
-      frontDefaultArray.push(frontImgPath);
-      frontShinyArray.push(shinyImgPath);
-      // const image = <img src={shinyImgPath} />;
-      // const imageTwo = <img src={frontImgPath} />;
-
-      // setPokemon(<div>{image}{imageTwo}</div>)
-
-      console.log(frontShinyArray.length);
-
-      if(frontShinyArray.length === 10) {
-        // const everything = frontDefaultArray.map((item) => <img src={item} />)
-        // const everythingTwo = frontShinyArray.map((item) => <img src={item} />)
-
-        const combinedArray = [];
-        for(let i = 0; i < frontShinyArray.length; i++) {
-          combinedArray.push(frontDefaultArray[i]);
-          combinedArray.push(frontShinyArray[i]);
-        }
-
-        const everything = combinedArray.map((item) => <img src={item}/>);
+      if(response.sprites) {
+              // image code
+              let frontImgPath = response.sprites.front_default;
+              let shinyImgPath = response.sprites.front_shiny;
+              frontDefaultArray.push(frontImgPath);
+              frontShinyArray.push(shinyImgPath);
 
 
-        setPokemon(<div>{everything}</div>)
+              if(frontShinyArray.length === 10) {
+                // const everything = frontDefaultArray.map((item) => <img src={item} />)
+                // const everythingTwo = frontShinyArray.map((item) => <img src={item} />)
 
-        // setPokemon(<div>{everything}{everythingTwo}</div>)
+                const combinedArray = [];
+                for(let i = 0; i < frontShinyArray.length; i++) {
+                  combinedArray.push(frontDefaultArray[i]);
+                  combinedArray.push(frontShinyArray[i]);
+                }
+
+                const everything = combinedArray.map((item) => <img src={item}/>);
+
+
+                setPokemon(<div>{everything}</div>)
+
+                // setPokemon(<div>{everything}{everythingTwo}</div>)
+              }
+      } else if (response.effect_entries) {
+              // move code
+              if(response.flavor_text_entries[0].language.name === "ja") {
+                moveText.push(response.flavor_text_entries[1].flavor_text);
+              } else {
+                moveText.push(response.flavor_text_entries[0].flavor_text);
+              }
+              console.log(moveText);
       }
     }
 
+    const baseXPList = [];
+    const randomMoveInfo = {};
+    const moveNames = [];
     const handleResponse2 = (response) => {
+      // base xp code
+      baseXPList.push(response.base_experience);
+      // console.log(baseXPList);
+
+      // random move info code
+      moveNames.push(response.abilities[0].ability.name);
+      console.log(moveNames);
+      const moveUrl = response.abilities[0].ability.url;
+      fetch(moveUrl)
+      .then(handleFetch)
+      .then(handleResponse3)
+      .catch(handleError)
+
+      // image code
       const evenDeeperUrl = response.forms[0].url;
-      // console.log(evenDeeperUrl);
 
       fetch(evenDeeperUrl)
       .then(handleFetch)
@@ -64,7 +87,7 @@ export default function APIcall() {
       respPoke.forEach((pokepoke) => {
         namesArray.push(pokepoke.props.children);
       })
-      console.log(namesArray);
+      // console.log(namesArray);
 
       //pictures
       const pokeUrl = response.results.map((item) => <li>{item.url}</li>);
