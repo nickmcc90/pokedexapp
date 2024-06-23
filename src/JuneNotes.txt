@@ -1,0 +1,30 @@
+I've come back to this project on 6/23/24. I see a lot of redundancy in the code and text
+in the App.js that could easily be a component. I do see that the API calling is its own
+component that is rendered onto the screen instead of being only a useEffect inside App.js.
+I also see that getting data from the pokedex API isn't as simple as it seems because there are
+APIs inside of APIs. So multiple fetching requests need to be made, from the code I see, it looks
+like 3 fetches need to be made. I'm going to spruce this code up and finish this app, hopefully in 
+TOPS 2 days worth of library time.
+
+Firstly, I notice that since we create the pokemon state variable within a component called APIcall.jsx,
+we aren't going to be able to access this data from any other component. I need to define the pokemon state
+variable in App.js then pass it into the API call function so that I can actually use the data inside
+of a card component.
+
+And I'm seeing no reason to use a database for this, unless there is authentication and we are saving person
+details so that they can save their teams upon storing them.
+
+Secondly, I see that I have a body tag in App.js which isn't needed because there is already one in index.html.
+
+Thirdly, I see that I have stuff in the return statment in App.js that could just be components themselves.
+I'm going to make a header component with both the header and the image.
+
+My first thought is to have an assortment of different state variables that each hold an array of however
+many pokemon we want to render's information. Basically, a separate variable for each of the following:
+Name, stats, pictures, and type. We already have a state variable called pokemon that holds both the
+default and shiny pictures of a pokemon. We can pass all the state variables to this API call and
+grab everything we need. On top of this, I'm going to make the fetching code as concise as possible. Even though
+we are calling APIs within APIs and we are getting information based on a quantity of pokemon, and not
+specific pokemon.
+
+We will start this process tomorrow!! Then get on to the gym app, or maybe crazy miser...

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { database } from '../database.js';
 import { get, ref, child, set, update, remove } from 'firebase/database';
 
-export default function APIcall() {
+export default function APIcall(props) {
 
-    const [pokemon, setPokemon] = useState();
+    const { pokemon, setPokemon } = props;
 
     const handleFetch = (response) => {
       // console.log(response.status)
@@ -87,7 +87,9 @@ export default function APIcall() {
       respPoke.forEach((pokepoke) => {
         namesArray.push(pokepoke.props.children);
       })
-      // console.log(namesArray);
+
+      console.log(namesArray);
+      console.log(respPoke);
 
       //pictures
       const pokeUrl = response.results.map((item) => <li>{item.url}</li>);

@@ -1,23 +1,23 @@
+import { useState } from 'react'
 import './styles/App.css'
-import masterball from './icons/game.png'
 import APIcall from './components/APIcall';
 import Card from './components/pokecard';
+import Header from './components/header';
 
 function App() {
-  return (
-    <body>
-      <h1 className="header">Pokedex Pokemon Viewer</h1>
-      <div className="img-container">
-        <img className="masterball" src={masterball} />
-      </div>
 
-      {/* <APIcall /> */}
+  const [pokemon, setPokemon] = useState();
+
+  return (
+    <>
+      <Header />
+      <APIcall pokemon={pokemon} setPokemon={setPokemon}/>
 
       <Card />
 
       {/* <button>Load more....</button> */}
 
-    </body>
+    </>
   );
 }
 

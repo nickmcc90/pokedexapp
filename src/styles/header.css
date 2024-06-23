@@ -1,0 +1,17 @@
+h1 {
+  font-family: poppins;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.masterball {
+  height: 100px;
+}
