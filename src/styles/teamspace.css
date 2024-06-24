@@ -1,0 +1,12 @@
+.line {
+  background-color: black;
+  height: 2px;
+  inset: 0;
+}
+
+.teamspace-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 15px;
+}

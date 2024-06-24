@@ -28,3 +28,9 @@ we are calling APIs within APIs and we are getting information based on a quanti
 specific pokemon.
 
 We will start this process tomorrow!! Then get on to the gym app, or maybe crazy miser...
+
+
+What I've learned about gathering API data in general... If you can grab the data all at once in a single
+cal (like pressing a button), use an array with [...value, value]. If there are multiple calls to make at
+once, use an array to capture all the values and push each value into the array, then set the state variable
+to the end array.

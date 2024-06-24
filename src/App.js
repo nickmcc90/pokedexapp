@@ -1,21 +1,38 @@
 import { useState } from 'react'
 import './styles/App.css'
 import APIcall from './components/APIcall';
-import Card from './components/pokecard';
 import Header from './components/header';
+import Teamspace from './components/teamspace';
+import Cardspace from './components/cardspace';
 
 function App() {
 
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState([]); // default and shiny images
+  console.log(pokemon)
+  const [names, setNames] = useState([]); // names
+  console.log(names);
+  const [baseXP, setBaseXP] = useState([]); // base XP
+  console.log(baseXP)
+  const [move, setMove] = useState([]); // move name
+  console.log(move)
+  const [moveInfo, setMoveInfo] = useState([]); // move info
+  console.log(moveInfo);
+  const [team, setTeam] = useState([]) // pokemon added to team.
+
+  const [pokeLoad, setPokeLoad] = useState(10);
+
+  function handlePokeLoad() {
+    let number = pokeLoad + 10;
+    setPokeLoad(number)
+  }
 
   return (
     <>
       <Header />
-      <APIcall pokemon={pokemon} setPokemon={setPokemon}/>
+      <APIcall pokeLoad={pokeLoad} pokemon={pokemon} setPokemon={setPokemon} setNames={setNames} setBaseXP={setBaseXP} setMove={setMove} setMoveInfo={setMoveInfo}/>
 
-      <Card />
-
-      {/* <button>Load more....</button> */}
+      <Teamspace />
+      <Cardspace pokeLoad={pokeLoad} pokemon={pokemon} names={names} baseXP={baseXP} move={move} moveInfo={moveInfo}/>
 
     </>
   );
