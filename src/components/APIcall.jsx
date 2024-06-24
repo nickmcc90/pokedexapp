@@ -93,7 +93,7 @@ export default function APIcall(props) {
       .then(handleFetch)
       .then(handleResponse)
       .catch(handleError)
-    }, [pokeLoad])
+    }, [])
 
 
     return (

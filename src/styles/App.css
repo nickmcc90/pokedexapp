@@ -1,3 +1,24 @@
 body {
   background-color: rgb(255, 233, 109);
 }
+
+.display-button {
+  font-size: 1.2rem;
+  background-color: rgb(255, 165, 47);
+  border: none;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  transition-duration: 200ms;
+}
+
+.display-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

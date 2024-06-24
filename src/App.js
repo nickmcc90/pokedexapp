@@ -32,8 +32,11 @@ function App() {
       <APIcall pokeLoad={pokeLoad} pokemon={pokemon} setPokemon={setPokemon} setNames={setNames} setBaseXP={setBaseXP} setMove={setMove} setMoveInfo={setMoveInfo}/>
 
       <Teamspace />
-      <Cardspace pokeLoad={pokeLoad} pokemon={pokemon} names={names} baseXP={baseXP} move={move} moveInfo={moveInfo}/>
+      <Cardspace handlePokeLoad={handlePokeLoad} pokeLoad={pokeLoad} pokemon={pokemon} names={names} baseXP={baseXP} move={move} moveInfo={moveInfo}/>
 
+      <div className="button-container">
+        <button className="display-button">Display more pokemon...</button>
+      </div>
     </>
   );
 }
